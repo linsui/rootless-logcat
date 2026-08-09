@@ -18,12 +18,19 @@ jobs:
           java-version: 21
 
       - uses: gradle/actions/setup-gradle@v6
+  
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
 
       - run: |
           mkdir files
-          sed -i -e 's/></>\n</g' $ANDROID_HOME/platforms/android-37.0/package.xml
-          cat $ANDROID_HOME/platforms/android-37.0/package.xml
-          ./gradlew assembleRegularRelease || true
+          mv $ANDROID_HOME/platforms/android-37.0/package.xml files
+          rm -rf $ANDROID_HOME/platforms
+          curl -Lo sdkmamanger.py https://gitlab.com/fdroid/sdkmanager/-/raw/master/sdkmanager.py
+          python3 sdkmanager.py 'platforms;android-37.0'
+          ./gradlew assembleRegularRelease
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
