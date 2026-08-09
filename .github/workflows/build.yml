@@ -24,7 +24,7 @@ jobs:
           cp $ANDROID_HOME/platforms/android-37.0/package.xml files/gha-package.xml
           ls $ANDROID_HOME/platforms
           rm -rf $ANDROID_HOME/paltforms
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager 'platforms;37.0'
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager 'platforms;android-37.0'
           ./gradlew assembleRegularRelease || true
 
       - name: Upload Artifact
