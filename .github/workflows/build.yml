@@ -28,6 +28,7 @@ jobs:
           mkdir files
           mv $ANDROID_HOME/platforms/android-37.0/package.xml files
           rm -rf $ANDROID_HOME/platforms
+          pip install requests
           curl -Lo sdkmanager.py https://gitlab.com/fdroid/sdkmanager/-/raw/master/sdkmanager.py
           python3 sdkmanager.py 'platforms;android-37.0'
           ./gradlew assembleRegularRelease
