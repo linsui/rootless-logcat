@@ -23,3 +23,6 @@ jobs:
           mv $ANDROID_HOME/platforms/android-37.0 android-37.0
           ./gradlew assembleRegularRelease || true
           diff -r $ANDROID_HOME/platforms/android-37.0 android-37.0
+          rm $ANDROID_HOME/platforms/android-37.0/package.xml
+          cp android-37.0/package.xml $ANDROID_HOME/platforms/android-37.0
+          ./gradlew assembleRegularRelease
