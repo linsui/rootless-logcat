@@ -22,11 +22,12 @@ jobs:
       - run: |
           mv $ANDROID_HOME/platforms/android-37.0 android-37.0
           ./gradlew assembleRegularRelease || true
-          cp $ANDROID_HOME/platforms/android-37.0/package.xml sdk-package.xml
-          cp android-37.0/package.xml gha-package.xml
+          mkdir files
+          cp $ANDROID_HOME/platforms/android-37.0/package.xml files/sdk-package.xml
+          cp android-37.0/package.xml files/gha-package.xml
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: package.xml
-          path: *-package.xml
+          path: files/
