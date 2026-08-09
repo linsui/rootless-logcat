@@ -20,6 +20,6 @@ jobs:
       - uses: gradle/actions/setup-gradle@v6
 
       - run: |
-          mv $ANDROID_HOME/platforms/android-37.0 $ANDROID_HOME/android-37.0
+          mv $ANDROID_HOME/platforms/android-37.0 android-37.0
           ./gradlew assembleRegularRelease || true
-          diff -r $ANDROID_HOME/platforms/android-37.0 $ANDROID_HOME/android-37.0
+          diff -r $ANDROID_HOME/platforms/android-37.0 android-37.0
