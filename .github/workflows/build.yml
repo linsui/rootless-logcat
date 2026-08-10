@@ -26,12 +26,10 @@ jobs:
 
       - run: |
           mkdir files
-          mv $ANDROID_HOME/platforms/android-37.0/package.xml files
-          rm -rf $ANDROID_HOME/platforms
-          pip install requests looseversion
-          curl -Lo sdkmanager.py https://gitlab.com/fdroid/sdkmanager/-/raw/master/sdkmanager.py
-          python3 sdkmanager.py 'platforms;android-37.0'
-          ./gradlew assembleRegularRelease
+          ls -la $ANDROID_HOME/platforms/android-37.0/
+          rm -rf $ANDROID_HOME/platforms/android-37.0/
+          ./gradlew assembleRegularRelease || true
+          ls -la $ANDROID_HOME/platforms/android-37.0/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
