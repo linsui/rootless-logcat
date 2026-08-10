@@ -30,6 +30,7 @@ jobs:
           rm -rf $ANDROID_HOME/platforms/android-37.0/
           ./gradlew assembleRegularRelease || true
           ls -la $ANDROID_HOME/platforms/android-37.0/
+          ./gradlew assembleRegularRelease || true
           chmod 777 $ANDROID_HOME/platforms/android-37.0/package.xml
           ./gradlew assembleRegularRelease || true
 
